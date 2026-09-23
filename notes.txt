@@ -1,0 +1,360 @@
+-------------------------------- SANITY CMS STRUCTURE --------------------------------
+
+- Files
+  > Type: ["Annual Report", "Policies"] - Can add more on
+    - Title
+    - Body
+    - File
+
+- Ecosystem Stages ----------
+  > Title
+  > Description
+  > Image(s)
+
+- Homepage Hero ------------
+  > Image
+    - Alt Text
+  > Title
+  > Subtext (Optional)
+  > Link [for button]
+
+- About Us -------------
+  > Who We Are
+    - Image [Add as many you like] - Slideshow
+      > Alt Text for each image
+  > Impact - Link to Homepage impact section
+    - Icon
+    - Card
+    - Line
+  > Downloadable (Get from files)
+
+- Project Category --------------
+  > Name
+  > Description
+  > Image(s)
+  > Donation items
+    - Frequency (One off, Monthly)
+    - Item
+    - Price
+    - Amounts [list of prices]
+    - Intention (Get from intentions)
+
+- Location --------------
+  > Name
+  > Description
+  > Co ordinates [for map]
+    - Longitude
+    - Latitude
+
+- Project ------------
+  > Name
+  > Tagline
+  > Project Category
+  > Project Card Summary
+  > Location (Get from Locations)
+  > Slug
+  > Hero amounts [3 amounts] (most needy for project)
+    - Impact Labels
+  > Intro Section
+    - Section Tag
+    - Title
+    - Body text
+    - Stats [Add as many]
+      > Title
+      > Subtext
+  > Case Study (add up to 3 case studies per page)
+    - Title
+    - Image
+      > Alt Text
+    - Image Caption
+    - Quote
+    - Body
+    - Reference
+      > Ref Date and Location
+  > Donation Section
+    - Section Tag
+    - Donation Title
+    - Donation Subtext
+    - Donation items (add as many)
+      > Icon: From react icons [Icon name is filled in]
+      > Item title (Will show up on donation item detail page)
+      > Item Sub text (for donation item card) (Will show up on donation item detail page)
+      > Price (Shows on Donation item detail page)
+      	- Frequency
+      > Donation Item Text body
+      > Amounts (add) [Fixed (full price) & custom for all]
+      > Intention ["Zakat", "Sadaqah", "Lillah", "General"], Can add more as a separate document (On donation item card, checkbox)
+      > Image(s) - Add as much as you want
+        - Caption
+        - Alt Text
+        - Link
+      > Additional fields (add as many)
+        - Label for additional field
+      > Info
+      > Key Features (add as many as possible)
+      	- Title
+        - Text
+      > How it helps (add as many as possible)
+        - Text
+      > End goal
+      > Summarise
+  > Benefits
+    - title
+    - subtext
+    - Card (add as many you want)
+      > Title
+      > Subtext
+    - Image Gallery (add as many you want)
+      > Image
+      > Alt text
+      > Link
+  > Impact
+    - Title
+    - Body text
+    - Impact Cards
+      > Stat
+      > body text
+  > Ecosystem
+    - Title
+    - Body text
+    - Card
+      > Icon: From react icons [Icon name is filled in]
+      > Title
+      > Body text
+    - Quote card
+      > Icon: From react icons [Icon name is filled in]
+      > Quote
+      > Reference
+  > FAQ (add as many you want)
+    - Card
+      > Question
+      > Answer text
+
+
+-------------------------------- DATABASE STRUCTURE --------------------------------
+Donation
+  - ID [Primary Key]
+  - Donation ID (auto generated)
+  - Donation Type [Monthly, One Off]
+  - Donation [Donation Id]
+  - Amount [Amount]
+  - Intention [Intention]
+  - Gift Aid [Gift Aid - Yes/No]
+  - Donation status [Pending, Completed, Failed]
+
+Donor
+  - ID [Primary Key]
+  - Name
+  - Email [Unique]
+  - Phone
+  - Address
+  - Foreign Key(Donation.Donation Id)
+  - Newsletter Subscribe [Yes/No] (Marketing Subscription Foreign key)
+
+Location
+  - ID [Primary Key]
+  - Name
+  - Description
+  - Co ordinates [for map]
+    > Longitude
+    > Latitude
+  - Projects (Foreign Key(Project.Location.Id))
+  - Created At [Date]
+  - Created Time [Time]
+
+Project
+  - Project Id
+  - Project [project name]
+  - Project Category [project category name]
+  - Ecosystem Stage
+  - Location (Foreign Key(Location.Location.Id))
+
+Payment
+  - Payment ID [Primary Key]
+  - Amount [Amount]
+  - Payment method [Card, Paypal, Google Pay]
+  - Frequency [Monthly, One Off]
+  - Payment status [Pending, Completed, Failed]
+  - Payment date [Date]
+  - Payment time [Time]
+  - Payment currency [Currency]
+  - Donation [Donation Id, Foreign Key(Donation.Donation Id)]
+
+  Marketing Subscription
+  - ID [Primary Key]
+  - Name
+  - Email
+  - Phone
+  - Subscription [Active, Unsubscribed]
+  - Unsubscribe Date [Date]
+  - Unsubscribe Time [Time]
+  - Created Date [Date]
+  - Created Time [Time]
+
+
+-------------------------------- FILE STRUCTURE --------------------------------
+/ (project root)
+├── sanity/                                         # Sanity Studio (v3 embedded)
+│   ├── sanity.cli.ts
+│   ├── sanity.config.ts
+│   ├── schemas/
+│   │   ├── index.ts                                # aggregates all schemas
+│   │   ├── intention.ts                            # intention for donations i.e zakat, sadaqah etc
+│   │   ├── file.ts                                 # for downloading files
+│   │   ├── ecosystemStage.ts                       # stages of ecosystem
+│   │   ├── homepageHero.ts                         # homepagehero images and text
+│   │   ├── aboutUs.ts                              # about us section (company overview)
+│   │   ├── location.ts                             # location of the projects
+│   │   ├── projectCategory.ts                      # category of projects
+│   │   ├── project.ts                              # individual projects
+│   │   ├── campaign.ts                             # campaigns
+│   │   └── objects/
+│   │       ├── altImage.ts                         # for images with alt text
+│   │       ├── stat.ts                             # for stats on projects
+│   │       └── donationItem.ts                     # for donation items on projects
+│   └── structure/                                  # optional desk structure
+-----------------------------------------------  OLD ONE ABOVE --------------------------------------
+sanity/
+├── schemaTypes/
+│   ├── index.ts
+│   ├── documents/
+│   │   ├── sliderHero.ts                           # ← was homepageHero
+│   │   ├── ecosystemStage.ts         - Done  
+│   │   ├── aboutUs.ts                - Done: TODO experimental actions              
+│   │   ├── projectCategory.ts        - Done
+│   │   ├── project.ts                - Done 
+│   │   ├── donationIntention.ts      - Done
+│   │   ├── fileCard.ts               - Done
+│   │   ├── navigation.ts             - Done
+│   │   └── homepageHero.ts           - Done: TODO experimental actions
+│   └── objects/
+│       ├── imageWithAlt.ts           - Done
+│       ├── heroAmount.ts             - Done
+│       ├── stat.ts                   - Done
+│       ├── caseStudy.ts              - Done
+│       ├── donationItem.ts           - Done
+│       ├── donationAmount.ts         - Done  
+│       ├── additionalField.ts        - Done
+│       ├── keyFeature.ts             - Done
+│       ├── howItHelps.ts             - Done
+│       ├── benefitCard.ts            - Done
+│       ├── imageGalleryItem.ts       - Done
+│       ├── impactCard.ts             - Done
+│       ├── aboutImpactItem.ts        - Done        # ← simplified — icon + figure + line
+│       ├── ecosystemCardRef.ts       - Done        # ← references ecosystemStage doc
+│       ├── ecosystemQuoteCard.ts     - Done
+│       └── faqCard.ts                - Done  
+│       ├── navItem.ts                - Done
+│       ├── navSubItem.ts             - Done
+
+│
+├── app/
+│   ├── [locale]/                                   # i18n dynamic segment
+│   │   ├── layout.tsx                              # wraps all route groups; loads next-intl messages
+│   │   │
+│   │   ├── (website)/                              # Public marketing & donation site
+│   │   │   ├── layout.tsx                          # public header, footer, branding
+│   │   │   ├── page.tsx                            # homepage
+│   │   │   ├── about/page.tsx
+│   │   │   ├── projects/
+│   │   │   │   ├── page.tsx                        # projects listing
+│   │   │   │   └── [slug]/page.tsx                 # project detail
+│   │   │   ├── campaigns/
+│   │   │   │   ├── page.tsx                        # active/upcoming campaigns
+│   │   │   │   └── [slug]/page.tsx
+│   │   │   ├── donate/page.tsx                     # donation checkout flow
+│   │   │   ├── faq/page.tsx
+│   │   │   └── ...                                 # privacy, contact, etc.
+│   │   │
+│   │   ├── (admin)/                                # admin.humanreliefmission.com
+│   │   │   ├── layout.tsx                          # auth-gated, sidebar nav
+│   │   │   ├── dashboard/page.tsx
+│   │   │   ├── donations/
+│   │   │   │   ├── page.tsx                        # list / search
+│   │   │   │   └── [reference]/page.tsx            # donation details
+│   │   │   ├── donors/
+│   │   │   ├── payments/
+│   │   │   ├── exports/
+│   │   │   ├── receipts/
+│   │   │   ├── analytics/
+│   │   │   └── settings/
+│   │   │
+│   │   └── (operations)/                           # ops.humanreliefmission.com
+│   │       ├── layout.tsx                          # internal role-based access
+│   │       ├── governance/
+│   │       ├── field-reporting/
+│   │       ├── procurement/
+│   │       ├── volunteers/
+│   │       ├── impact/
+│   │       └── ...
+│   │
+│   ├── studio/                                     # Optional: Sanity Studio at /studio (can be on own domain)
+│   │   └── [[...index]]/page.tsx                   # Embeds <Studio /> from sanity.config
+│   │
+│   └── api/
+│       ├── sanity/
+│       │   └── sync/route.ts                       # POST webhook from Sanity for DB sync
+│       ├── donate/route.ts                         # donation & payment processing
+│       ├── newsletter/
+│       │   └── route.ts                            # subscribe / unsubscribe
+│       ├── push/
+│       │   ├── subscribe/route.ts
+│       │   └── send/route.ts                       # trigger a push campaign
+│       └── accounting/
+│           └── export/route.ts                     # CSV/PDF exports for finance
+│
+├── lib/                                            # shared business logic
+│   ├── supabase/
+│   │   ├── server.ts                               # service_role client (API routes)
+│   │   ├── admin.ts                                # read-only client for admin pages
+│   │   └── public.ts                               # anon client for public reads
+│   ├── sanity/
+│   │   └── client.ts                               # Sanity JS client (GROQ queries)
+│   ├── i18n/
+│   │   └── request.ts                              # next-intl config (routing, messages)
+│   ├── constants.ts
+│   ├── utils.ts
+│   └── validations.ts
+│
+├── components/                                     # shared UI components
+│   ├── (website)/                                  # marketing components (hero, card, donate form)
+│   ├── (admin)/                                    # dashboard components (tables, stats)
+│   └── ui/                                         # generic primitives (Button, Modal, etc.)
+│
+├── messages/                                       # next-intl translations
+│   ├── en.json
+│   ├── ar.json
+│   └── ...
+│
+├── middleware.ts                                   # locale detection + subdomain routing
+├── next.config.js
+└── tailwind.config.ts
+
+
+┌─────────────────────────────────────────────────────────────┐
+│                    SLIDER HERO                              │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐                      │
+│  │ Slide 1 │  │ Slide 2 │  │ Slide 3 │  ⋯ (drag to order)   │
+│  └─────────┘  └─────────┘  └─────────┘                      │
+├─────────────────────────────────────────────────────────────┤
+│                     ABOUT US                                │
+│  Who We Are ── slideshow images                             │
+│  Impact ── icon + figure + line  ← mirrors homepage stats   │
+│  File Cards ── references fileCard documents                │
+├─────────────────────────────────────────────────────────────┤
+│                     PROJECT                                 │
+│  ┌─ Ecosystem Cards ─────────────> ecosystemStage (ref) ──┐ │
+│  │  Stage 1: Essentials                                   │ │
+│  │  Stage 2: Stability                                    │ │
+│  │  Stage 3: Development                                  │ │
+│  │  Stage 4: Self Sustainability                          │ │
+│  └────────────────────────────────────────────────────────┘ │
+│                                                             │
+│  Donation Items                                             │
+│  ┌────────────────────────────┐                             │
+│  │ Full Price: £500           │                             │
+│  │ Quick-select: £50, £100... │                             │
+│  │ Custom: always available   │  ← automatically            │
+│  │ Intentions → donationIntention (ref)                     │
+│  └────────────────────────────┘                             │
+└─────────────────────────────────────────────────────────────┘
