@@ -1,0 +1,81 @@
+export const DONATION_PROJECTS_QUERY = `
+  *[_type == "project" && defined(slug.current)] | order(name asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    donationSection {
+      donationItems[] {
+        _key,
+        "slug": slug.current,
+        itemTitle,
+        itemSubtext,
+        price,
+        contactForPricing,
+        donationType,
+        frequency,
+        amounts[] {
+          _key,
+          amount,
+          label
+        },
+        intentions[]-> {
+          _id,
+          title
+        },
+        additionalFields[] {
+          label
+        }
+      }
+    }
+  }
+`
+
+export type DonationPortalAmount = {
+  _key: string
+  amount: number
+  label?: string
+}
+
+export type DonationPortalIntention = {
+  _id: string
+  title: string
+}
+
+export type DonationPortalItem = {
+  _key: string
+  slug?: string
+  itemTitle: string
+  itemSubtext?: string
+  price?: number | null
+  contactForPricing?: boolean
+  donationType?: 'one-off' | 'monthly'
+  frequency?: string | string[]
+  amounts?: DonationPortalAmount[]
+  intentions?: DonationPortalIntention[]
+  additionalFields?: Array<{ label: string }>
+}
+
+export type DonationPortalProject = {
+  _id: string
+  name: string
+  slug: string
+  donationSection?: {
+    donationItems?: DonationPortalItem[]
+  }
+}
+
+export function getProjectDonationItems(
+  project: DonationPortalProject | undefined,
+  donationType: string
+): DonationPortalItem[] {
+  const items = project?.donationSection?.donationItems ?? []
+  const targetFrequency = donationType === 'oneoff' ? 'one-off' : donationType
+
+  return items.filter((item) => {
+    if (Array.isArray(item.frequency)) {
+      return item.frequency.includes(targetFrequency)
+    }
+    const freq = item.frequency ?? item.donationType ?? 'monthly'
+    return freq === targetFrequency
+  })
+}

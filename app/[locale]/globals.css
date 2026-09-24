@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Getronde';
+  src: url('/fonts/Getronde.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Getronde", "Georgia", serif;
+  /* Uses the CSS variable injected by next/font/google in layout.tsx */
+  --font-body: var(--font-rubik), sans-serif;
+
+  --color-purple: #650199;
+  --color-purple-dark: #4a0070;
+  --color-purple-light: #8b01cc;
+  --color-purple-faint: rgba(101, 1, 153, 0.08);
+  --color-yellow: #FFD21B;
+  --color-yellow-hover: #ebc700;
+  --color-brand-white: #f5f5f5;
+  --color-brand-black: #1a1a1a;
+  --color-brand-grey: #6b6b6b;
+  --color-brand-lgrey: #e8e8e8;
+
+  --shadow-nav: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-btn: 0 6px 20px rgba(0, 0, 0, 0.15);
+  --shadow-btn-purple: 0 6px 20px rgba(101, 1, 153, 0.3);
+
+  --animate-pulse2: pulse2 2s infinite;
+  --animate-ticker: ticker 20s linear infinite;
+
+  @keyframes pulse2 {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(1.5);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  --bg-hero-gradient: linear-gradient(135deg, #1a0028 0%, #4a0070 50%, #650199 100%);
+}
+
+@layer base {
+  body {
+    @apply font-body bg-brand-white text-brand-black overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-body font-bold leading-none;
+  }
+}
