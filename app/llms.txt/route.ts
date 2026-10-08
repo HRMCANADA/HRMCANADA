@@ -55,6 +55,7 @@ export async function GET() {
   markdown += `- [Donate](${BASE_URL}/donate): Donate online securely with Gift Aid, Zakat, and Sadaqah options.\n`;
   markdown += `- [Contact Us](${BASE_URL}/contact): Get in touch with our team in Leeds, UK, or submit a volunteer application.\n`;
   markdown += `- [Annual Reports](${BASE_URL}/annual-reports): Financial transparency, audited accounts and annual impact overviews.\n`;
+  // markdown += `- [Policies & Governance](${BASE_URL}/policies): Safeguarding, data protection, and operational policy standards.\n\n`;
   markdown += `- [Terms of Use](${BASE_URL}/policies/terms-of-use): Safeguarding, data protection and operational policy standards.\n\n`;
   markdown += `- [Privacy Policy](${BASE_URL}/policies/data-protection-policy): How we collect, use, and protect personal and donor data.\n\n`;
   markdown += `- [Cookie Policy](${BASE_URL}/policies/cookie-policy): How cookies are used across the site, including payment processing.\n\n`;
