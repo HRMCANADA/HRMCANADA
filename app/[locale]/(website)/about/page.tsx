@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Hero from "../components/about/ecosystem/Hero";
+// import Hero from "../components/about/ecosystem/Hero";
 import WhoWeAre from "../components/about/WhoWeAre";
-import Impact from "../components/about/Impact";
-import Values from "../components/about/values";
-import FinalCTA from "../components/FinalCTA";
-import FundingDiagram from "../components/about/donationpolicy/FundingDiagram";
-import DonationPolicySection from "../components/about/donationpolicy/DonationPolicy";
+// import Impact from "../components/about/Impact";
+// import Values from "../components/about/values";
+// import FinalCTA from "../components/FinalCTA";
+// import FundingDiagram from "../components/about/donationpolicy/FundingDiagram";
+// import DonationPolicySection from "../components/about/donationpolicy/DonationPolicy";
 import JsonLd from "../components/JsonLd";
 import { BASE_URL, buildWebPage, buildBreadcrumb } from "../lib/jsonld";
 
@@ -41,11 +41,11 @@ export default function About() {
         buildBreadcrumb([{ name: "Home", url: BASE_URL }, { name: "About", url: `${BASE_URL}/about` }]),
       ]} />
       <WhoWeAre />
-      <Hero />
-      <DonationPolicySection />
-      <Impact />
-      <Values />
-      <FinalCTA />
+      {/* <Hero /> */}
+      {/* <DonationPolicySection /> */}
+      {/* <Impact /> */}
+      {/* <Values /> */}
+      {/* <FinalCTA /> */}
     </div>
   );
 }
