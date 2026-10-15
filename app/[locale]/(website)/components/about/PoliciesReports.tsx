@@ -152,10 +152,10 @@ export default async function PoliciesReports() {
             <br />
             Get in touch with our team: {" "}
             <Link
-              href="mailto:info@humanreliefmission.com"
+              href="mailto:canadahrm@gmail.com"
               className="text-brand-white underline underline-offset-2 transition-colors"
             >
-              info@humanreliefmission.com
+              canadahrm@gmail.com
             </Link>
           </p>
         </div>

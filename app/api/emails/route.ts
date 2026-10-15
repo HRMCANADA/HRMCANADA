@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     : `Donation Receipt — ${reference} | Human Relief Mission`;
 
   const orgSubject = `🎉 New Donation: ${reference} from ${firstName} ${lastName}`;
-  const orgEmail = process.env.CONTACT_TO_EMAIL || 'info@humanreliefmission.com';
+  const orgEmail = process.env.CONTACT_TO_EMAIL || 'canadahrm@gmail.com';
 
   try {
     // 1. Send receipt to donor
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       to: email,
       bcc: 'donate@humanreliefmission.com',
       subject: donorSubject,
-      replyTo: 'info@humanreliefmission.com',
+      replyTo: 'canadahrm@gmail.com',
       react: DonationReceipt({
         firstName,
         lastName,

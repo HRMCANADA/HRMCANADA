@@ -61,7 +61,7 @@ export const ORGANIZATION = {
     },
     {
       "@type": "ContactPoint",
-      email: "info@humanreliefmission.com",
+      email: "canadahrm@gmail.com",
       contactType: "customer support",
     },
   ],

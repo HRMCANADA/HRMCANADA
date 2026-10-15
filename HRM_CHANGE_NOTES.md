@@ -46,3 +46,5 @@ Changes prepared in source code; **not deployed**.
 - Verify that the Mailchimp audience belongs to HRM Canada and implement appropriate marketing consent and privacy disclosures before collecting subscriptions.
 
 - Newsletter removed from homepage, including subscription form and Mailchimp actions. Removed donation checkout newsletter opt-in. No Mailchimp account or keys required.
+
+- Standardized remaining visible website and email reply-to references from info@humanreliefmission.com to canadahrm@gmail.com.

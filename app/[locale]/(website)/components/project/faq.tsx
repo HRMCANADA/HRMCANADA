@@ -116,10 +116,10 @@ export default function FAQ({ data }: { data?: FaqData }) {
             <br />
             Get in touch with our team:{" "}
             <Link
-              href="mailto:info@humanreliefmission.com"
+              href="mailto:canadahrm@gmail.com"
               className="text-purple-light hover:text-purple-dark underline underline-offset-2 transition-colors"
             >
-              info@humanreliefmission.com
+              canadahrm@gmail.com
             </Link>
           </p>
         </div>
