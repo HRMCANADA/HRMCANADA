@@ -135,6 +135,7 @@ export async function generateMetadata({
   params: Promise<{ projectSlug: string }>;
 }): Promise<Metadata> {
   const { projectSlug } = await params;
+  if (/listening[ -]?circle/i.test(projectSlug)) notFound();
   const project = await sanityFetch(PROJECT_QUERY, { projectSlug });
 
   if (!project) return { title: "Project Not Found | Human Relief Mission" };
@@ -185,6 +186,7 @@ export default async function ProjectItem({
   params: Promise<{ projectSlug: string }>;
 }) {
   const { projectSlug } = await params;
+  if (/listening[ -]?circle/i.test(projectSlug)) notFound();
   const project = await sanityFetch(PROJECT_QUERY, { projectSlug });
 
   if (!project) {

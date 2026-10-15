@@ -11,16 +11,16 @@ import JsonLd from "./components/JsonLd";
 import { BASE_URL, buildWebPage, buildBreadcrumb } from "./lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Human Relief Mission — Helping Humanity Through Welfare",
+  title: "Human Relief Mission Canada — Education, Employment and Settlement",
   description:
-    "Human Relief Mission is a UK registered charity delivering emergency relief, food aid, healthcare, and sustainable development to communities in Afghanistan.",
+    "Human Relief Mission Canada is an independent Canadian non-profit focused on education, employment readiness, and newcomer settlement.",
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: "Human Relief Mission — Helping Humanity Through Welfare",
+    title: "Human Relief Mission Canada — Education, Employment and Settlement",
     description:
-      "Human Relief Mission is a UK registered charity delivering emergency relief, food aid, healthcare, and sustainable development to communities in Afghanistan.",
+      "Human Relief Mission Canada is an independent Canadian non-profit focused on education, employment readiness, and newcomer settlement.",
     url: BASE_URL,
     siteName: "Human Relief Mission",
     locale: "en_GB",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Human Relief Mission — Helping Humanity Through Welfare",
+    title: "Human Relief Mission Canada — Education, Employment and Settlement",
     description:
-      "UK-registered charity delivering emergency relief and sustainable development worldwide.",
+      "Independent Canadian non-profit supporting education, employment readiness, and settlement.",
   },
 };
 
@@ -75,14 +75,15 @@ const LAST_MONTHS_IMPACT_QUERY = `
 `;
 
 export default async function Home() {
-  const projects = await sanityFetch(ALL_PROJECTS_QUERY);
+  const allProjects = await sanityFetch(ALL_PROJECTS_QUERY);
+  const projects = (allProjects || []).filter((p: any) => !/listening[ -]?circle/i.test(`${p.name} ${p.slug}`) && /educat|learn|skill|employ|job|settle|newcomer|social club|new horizons/i.test(`${p.name} ${p.cardSummary || ""}`));
   const stages = await sanityFetch(ECOSYSTEM_STAGES_QUERY);
   const lastMonthsImpactData = await sanityFetch(LAST_MONTHS_IMPACT_QUERY);
 
   return (
     <div id="page-home" className="page active">
       <JsonLd data={[
-        buildWebPage({ title: "Human Relief Mission — Helping Humanity Through Welfare", description: "Human Relief Mission is a UK registered charity delivering humanitarian aid, emergency relief and sustainable development to communities in Afghanistan.", url: BASE_URL }),
+        buildWebPage({ title: "Human Relief Mission Canada — Education, Employment and Settlement", description: "Human Relief Mission Canada supports education, employment readiness and settlement in Canada.", url: BASE_URL }),
         buildBreadcrumb([{ name: "Home", url: BASE_URL }]),
       ]} />
       <Hero />

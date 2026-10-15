@@ -24,7 +24,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
             <div className="inline-block bg-purple-faint text-purple font-bold text-[0.75rem] tracking-widest uppercase px-4 py-1.5 mb-4">How To Help</div>
             <h2 className="text-4xl md:text-5xl font-bold text-brand-black mb-[1.2rem]">Our Projects</h2>
             <p className="text-[1.05rem] text-brand-grey leading-[1.7] max-w-150">
-              From supporting seniors and newcomers to building digital skills and responding to emergencies, HRM's projects are designed around the needs of the communities we serve.
+              HRM Canada offers educational, employment-readiness, and newcomer settlement programs for the communities we serve.
             </p>
           </div>
           <YellowCTA text="Support a Project" href="/projects" />
@@ -32,7 +32,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {projects && projects.length > 0 ? (
-            projects.map((project) => {
+            projects.filter((project) => !/listening[ -]?circle/i.test(`${project.name} ${project.slug}`) && /educat|learn|skill|employ|job|settle|newcomer|social club|new horizons/i.test(`${project.name} ${project.cardSummary || ""}`)).map((project) => {
               const base = project.headerImage?.asset
                 ? urlFor(project.headerImage.asset).fit("crop").auto("format").quality(80)
                 : null;

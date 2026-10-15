@@ -10,14 +10,14 @@ import { BASE_URL, buildItemList, buildBreadcrumb } from "../lib/jsonld";
 export const metadata: Metadata = {
   title: "Our Projects | Human Relief Mission",
   description:
-    "Explore active humanitarian projects including emergency aid, food packages, clean water wells, healthcare and education.",
+    "Explore educational, employment-readiness, and newcomer settlement programs in Canada.",
   alternates: {
     canonical: `${BASE_URL}/projects`,
   },
   openGraph: {
     title: "Our Projects | Human Relief Mission",
     description:
-      "Explore active humanitarian projects including emergency aid, food packages, clean water wells, healthcare and education.",
+      "Explore educational, employment-readiness, and newcomer settlement programs in Canada.",
     url: `${BASE_URL}/projects`,
     siteName: "Human Relief Mission",
     locale: "en_GB",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Our Projects | Human Relief Mission",
     description:
-      "Explore active humanitarian projects run by Human Relief Mission.",
+      "Explore educational, employment, and settlement programs offered by Human Relief Mission Canada.",
   },
 };
 
@@ -100,7 +100,8 @@ type Project = {
 };
 
 export default async function ProjectsPage() {
-  const projects: Project[] = await sanityFetch(PROJECTS_WITH_ITEMS_QUERY);
+  const allProjects: Project[] = await sanityFetch(PROJECTS_WITH_ITEMS_QUERY);
+  const projects = (allProjects || []).filter(p => !/listening[ -]?circle/i.test(`${p.name} ${p.slug}`) && /educat|learn|skill|employ|job|settle|newcomer|social club|new horizons/i.test(`${p.name} ${p.cardSummary || ""}`));
 
   return (
     <div id="page-projects" className="block min-h-screen">
@@ -112,8 +113,7 @@ export default async function ProjectsPage() {
         title="Projects"
         subtitle={
           <>
-            Explore our work across food aid, healthcare, education, water and
-            more. Every project is a step toward lasting change.
+            Explore our educational, employment-readiness, and newcomer settlement programs.
           </>
         }
         breadcrumb="Projects"
