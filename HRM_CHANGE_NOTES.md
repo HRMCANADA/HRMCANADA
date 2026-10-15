@@ -28,3 +28,12 @@ Changes prepared in source code; **not deployed**.
 - In Vercel set NEXT_RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL for the desired environments and redeploy.
 - Configure Squarespace-managed DNS with the precise records displayed in Resend Domains; do not invent DNS record values.
 - Website builds and email delivery have not been tested in this environment.
+
+## 15 October 2026 — Policies temporarily unavailable
+- `/en/policies` and `/en/policies/*` now render a Next.js 404, without deleting Sanity policy records.
+- Removed policy/governance links and groups from the Sanity-driven footer.
+- Removed advertised policy links from `/llms.txt`; sitemap did not include Policies.
+- Original policy page components retained under `docs/policy-pages-backup/` for future restoration.
+- Do not interpret temporary removal as waiver of legal privacy/terms disclosure duties. Review what legally required notices must remain available before production release.
+
+- Header navigation now filters Listening Circle, Policies and Governance from the Sanity-provided desktop and mobile menus.

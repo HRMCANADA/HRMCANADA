@@ -28,43 +28,30 @@ const ECOSYSTEM_STAGES_QUERY = `
   }
 `;
 
-const POLICIES_QUERY = `
-  *[_type == "policy" && defined(slug.current)] | order(title asc) {
-    title,
-    "slug": slug.current,
-    "subtitle": pageHeader.subtitle
-  }
-`;
-
 export async function GET() {
-  const [projects, stages, policies] = await Promise.all([
+  const [projects, stages] = await Promise.all([
     sanityFetch<any[]>(PROJECTS_QUERY).catch(() => []),
     sanityFetch<any[]>(ECOSYSTEM_STAGES_QUERY).catch(() => []),
-    sanityFetch<any[]>(POLICIES_QUERY).catch(() => []),
   ]);
 
   let markdown = `# Human Relief Mission\n\n`;
-  markdown += `> Human Relief Mission is a UK-registered charity (No. Pending) delivering emergency relief, clean water, healthcare, education, and sustainable development programmes to communities in Afghanistan, Pakistan, and Nigeria.\n\n`;
+  markdown += `> Human Relief Mission Canada is an independent Canadian non-profit supporting educational, employment-readiness, and settlement programmes.\n\n`;
 
   // Core Static Pages
   markdown += `## Core Pages\n\n`;
-  markdown += `- [Homepage](${BASE_URL}): Official website of Human Relief Mission, providing humanitarian aid and emergency relief.\n`;
-  markdown += `- [About Us](${BASE_URL}/about): Human Relief Mission’s mission, core values, 100% donation policy and governance structure.\n`;
-  markdown += `- [Our Projects](${BASE_URL}/projects): Browse active humanitarian and development projects.\n`;
+  markdown += `- [Homepage](${BASE_URL}): Official website of Human Relief Mission Canada.\n`;
+  markdown += `- [About Us](${BASE_URL}/about): Mission and programmes of Human Relief Mission Canada.\n`;
+  markdown += `- [Our Projects](${BASE_URL}/projects): Explore educational, employment and settlement projects.\n`;
   markdown += `- [4 Phase Ecosystem](${BASE_URL}/ecosystem): This model lifting families out of poverty from receiving Zakat to paying Zakat.\n`;
   markdown += `- [Donate](${BASE_URL}/donate): Donate online securely with Gift Aid, Zakat, and Sadaqah options.\n`;
-  markdown += `- [Contact Us](${BASE_URL}/contact): Get in touch with our team in Leeds, UK, or submit a volunteer application.\n`;
+  markdown += `- [Contact Us](${BASE_URL}/contact): Contact the Human Relief Mission Canada team.\n`;
   markdown += `- [Annual Reports](${BASE_URL}/annual-reports): Financial transparency, audited accounts and annual impact overviews.\n`;
-  markdown += `- [Policies & Governance](${BASE_URL}/policies): Safeguarding, data protection, and operational policy standards.\n\n`;
-  markdown += `- [Terms of Use](${BASE_URL}/policies/terms-of-use): Safeguarding, data protection and operational policy standards.\n\n`;
-  markdown += `- [Privacy Policy](${BASE_URL}/policies/data-protection-policy): How we collect, use, and protect personal and donor data.\n\n`;
-  markdown += `- [Cookie Policy](${BASE_URL}/policies/cookie-policy): How cookies are used across the site, including payment processing.\n\n`;
 
   // Dynamic Sanity Projects
   if (projects && projects.length > 0) {
     markdown += `## Active Projects\n\n`;
-    projects.forEach((p) => {
-      const summary = p.llmsSummary || p.seoDescription || p.tagline || p.cardSummary || "Humanitarian project by Human Relief Mission.";
+    projects.filter((p) => !/listening[ -]?circle/i.test(p.slug)).forEach((p) => {
+      const summary = p.llmsSummary || p.seoDescription || p.tagline || p.cardSummary || "Community programme by Human Relief Mission Canada.";
       const cleanSummary = summary.replace(/\s+/g, " ").trim();
       markdown += `- [${p.name}](${BASE_URL}/projects/${p.slug}): ${cleanSummary}\n`;
     });
@@ -83,22 +70,6 @@ export async function GET() {
     });
     markdown += `\n`;
   }
-
-  // Dynamic Sanity Policies
-  if (policies && policies.length > 0) {
-    markdown += `## Policies & Governance Documents\n\n`;
-    policies.forEach((pol) => {
-      const desc = pol.subtitle || `Official organizational policy for ${pol.title}.`;
-      const cleanDesc = desc.replace(/\s+/g, " ").trim();
-      markdown += `- [${pol.title}](${BASE_URL}/policies/${pol.slug}): ${cleanDesc}\n`;
-    });
-    markdown += `\n`;
-  }
-
-  // Optional Section
-  markdown += `## Optional\n\n`;
-  markdown += `- [Terms of Use](${BASE_URL}/policies/terms-of-use): Terms governing website access and usage.\n`;
-  markdown += `- [Privacy Policy](${BASE_URL}/policies/data-protection-policy): Data privacy and UK GDPR compliance guidelines.\n`;
 
   return new Response(markdown, {
     status: 200,

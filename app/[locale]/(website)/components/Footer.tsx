@@ -64,14 +64,14 @@ export default async function Footer() {
             <Link href="https://www.instagram.com/hrm.canada?exln=MWdiOWlqbDJ2YnZ3ZQ==" aria-label="Human Relief Mission Canada on Instagram" target="_blank" rel="noopener noreferrer" className="w-10 h-10 p-3 bg-brand-white/10 rounded-full flex items-center justify-center text-brand-white hover:bg-purple-light"><BiLogoInstagramAlt size={18} /></Link>
           </div>
         </div>
-        {footerColumns.map((col, colIdx) => (
+        {footerColumns.filter((col) => !/polic(?:y|ies)|governance/i.test(col.columnTitle)).map((col, colIdx) => (
           <div key={colIdx}>
             <div className="text-brand-white font-bold text-[0.875rem] tracking-widest uppercase mb-6">
               {col.columnTitle}
             </div>
             {col.links && col.links.length > 0 && (
               <ul className="list-none flex flex-col gap-2.5">
-                {col.links.map((link, linkIdx) => (
+                {col.links.filter((link) => !/polic(?:y|ies)|terms of use|governance/i.test(link.label) && !/\/policies(?:\/|$)/i.test(resolveHref(link))).map((link, linkIdx) => (
                   <li key={linkIdx}>
                     <Link
                       href={resolveHref(link)}
