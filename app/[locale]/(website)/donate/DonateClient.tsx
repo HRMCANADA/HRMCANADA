@@ -13,7 +13,6 @@ import { DonationState, initialDonationState } from "../components/donation/type
 import type { DonationPortalProject } from "../lib/sanity/donationProjects";
 import { useBasket } from "../context/BasketContext";
 import { buildDonationStateFromBasket } from "../lib/donation/syncBasketToDonationState";
-import { subscribeNewsletter } from "../../../actions";
 
 export const DONATION_SESSION_KEY = "hrm_donation_result";
 
@@ -65,7 +64,6 @@ export default function DonateClient({
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [newsletterOptIn, setNewsletterOptIn] = useState(false);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
@@ -210,14 +208,6 @@ export default function DonateClient({
   ) => {
     setIsProcessing(true);
 
-    if (success && newsletterOptIn) {
-      try {
-        await subscribeNewsletter(firstName, lastName, email, "Donation Checkout Subscribe");
-      } catch (err) {
-        console.error("Failed to subscribe user during checkout:", err);
-      }
-    }
-
     // Build the donation summary to pass to the result pages
     const donatedTotal = itemCount > 0 ? basketTotal : donationState.amount || 0;
     const giftAidAmt = donationState.giftAid ? donatedTotal * 0.25 : 0;
@@ -293,7 +283,6 @@ export default function DonateClient({
             reference: canonicalReference,
             paymentId: paymentId || null,
             subscriptionId: subscriptionId || null,
-            newsletterOptIn,
             items: itemCount > 0 ? items.map(item => ({
               projectSlug: item.projectSlug || null,
               donationItemSlug: item.donationItemSlug || item.donationItemKey || null,
@@ -395,8 +384,6 @@ export default function DonateClient({
           setLastName={setLastName}
           email={email}
           setEmail={setEmail}
-          newsletterOptIn={newsletterOptIn}
-          setNewsletterOptIn={setNewsletterOptIn}
           address={address}
           setAddress={setAddress}
           city={city}

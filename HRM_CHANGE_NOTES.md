@@ -37,3 +37,12 @@ Changes prepared in source code; **not deployed**.
 - Do not interpret temporary removal as waiver of legal privacy/terms disclosure duties. Review what legally required notices must remain available before production release.
 
 - Header navigation now filters Listening Circle, Policies and Governance from the Sanity-provided desktop and mobile menus.
+
+## Contact details and newsletter (15 October 2026)
+- Contact Us displayed email corrected to canadahrm@gmail.com. Address, phone and office hours left unchanged as requested.
+- Newsletter description revised to reflect Canadian education, employment-readiness and settlement programs.
+- Mailchimp integration no longer references a hard-coded legacy audience or server. Requires `MAILCHIMP_API_KEY`, `MAILCHIMP_SERVER_PREFIX`, and `MAILCHIMP_AUDIENCE_ID` in Vercel for Preview and Production. Without them the form displays a friendly unavailable message.
+- Contact form continues to require separate Resend verification and environment variables.
+- Verify that the Mailchimp audience belongs to HRM Canada and implement appropriate marketing consent and privacy disclosures before collecting subscriptions.
+
+- Newsletter removed from homepage, including subscription form and Mailchimp actions. Removed donation checkout newsletter opt-in. No Mailchimp account or keys required.

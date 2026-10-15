@@ -540,7 +540,7 @@ export const ecosystemStages: EcosystemStage[] = [
       {
         question: "How do I follow the journey of someone I've helped reach Sustainability?",
         answer:
-          "Donors who fund Sustainability projects receive a 12-month impact report tracking the progress of the individuals they've supported. With consent, we also share anonymised success stories through our newsletter and social channels.",
+          "Donors who fund Sustainability projects receive a 12-month impact report tracking the progress of the individuals they've supported. With consent, we may share anonymised success stories through our official communications.",
       },
     ],
   },

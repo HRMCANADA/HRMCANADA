@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ProjectsGrid from "./components/ProjectsGrid";
-import NewsletterForm from "./components/NewsletterForm";
 import Impact from "./components/Impact";
 import FinalCTA from "./components/FinalCTA";
 import Hero from "./components/Hero";
@@ -88,7 +87,6 @@ export default async function Home() {
       ]} />
       <Hero />
       <ProjectsGrid projects={projects} />
-      <NewsletterForm />
       <Impact />
       <LastMonthImpact data={lastMonthsImpactData} />
       <BottomCTA stages={stages} />

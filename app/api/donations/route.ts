@@ -24,7 +24,6 @@ export async function POST(request: Request) {
       reference,
       paymentId,
       subscriptionId,
-      newsletterOptIn,
       items,
     } = body;
 
@@ -289,43 +288,6 @@ export async function POST(request: Request) {
 
       if (paymentInsertErr) {
         console.error('Error inserting payment:', paymentInsertErr);
-      }
-    }
-
-    // 6. Marketing Subscription if newsletterOptIn is true
-    if (newsletterOptIn) {
-      const { data: existingSub, error: subFetchErr } = await supabase
-        .from('marketing_subscription')
-        .select('id')
-        .eq('email', cleanEmail)
-        .maybeSingle();
-
-      if (!subFetchErr) {
-        if (existingSub) {
-          await supabase
-            .from('marketing_subscription')
-            .update({
-              first_name: firstName,
-              last_name: lastName,
-              donor_id: donorId,
-              status: 'active',
-              consent_source: 'checkout',
-              subscribed_at: new Date().toISOString(),
-            })
-            .eq('id', existingSub.id);
-        } else {
-          await supabase
-            .from('marketing_subscription')
-            .insert({
-              email: cleanEmail,
-              first_name: firstName,
-              last_name: lastName,
-              donor_id: donorId,
-              status: 'active',
-              consent_source: 'checkout',
-              subscribed_at: new Date().toISOString(),
-            });
-        }
       }
     }
 
