@@ -53,7 +53,7 @@ export default async function Footer() {
         <div>
           <div>
             <Link href="/" >
-              <Image src="/hhtw.svg" alt="Humanitarian Support. Community Empowerment." width={200} height={200} className="w-48 h-auto " />
+              <Image src="/logo-white.svg" alt="Human Relief Mission Canada logo" width={150} height={158} className="w-28 h-auto" />
             </Link>
             <div className="text-[0.875rem] leading-[1.7] my-6">
               Human Relief Mission Canada supports education, employment readiness, and newcomer settlement in Canadian communities.

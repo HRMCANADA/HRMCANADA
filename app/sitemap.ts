@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Dynamic: project pages ────────────────────────────────────────────────
   const projects = await sanityFetch<ProjectSlugResult[]>(PROJECT_SLUGS_QUERY)
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.flatMap((p) =>
+  const projectRoutes: MetadataRoute.Sitemap = projects.filter((p) => !/listening[ -]?circle/i.test(p.slug)).flatMap((p) =>
     localisedEntries(
       `/project/${p.slug}`,
       new Date(p._updatedAt),

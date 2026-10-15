@@ -15,3 +15,16 @@ Changes prepared in source code; **not deployed**.
 3. Confirm the authorized organization description and independently validate any program claims; remove unsupported impact figures.
 4. Run npm install and npm run build locally, then preview branch deployment in Vercel, and check desktop/mobile before merging.
 5. ZIP excludes uploaded .env and .env.local secrets. If these were ever committed to GitHub, rotate credentials and stop tracking those files.
+
+## Follow-up revision — footer and Listening Circle
+- Footer: replaced the `hhtw.svg` slogan illustration with the HRM Canada white logo (`logo-white.svg`).
+- Listening Circle: excluded it from the XML sitemap in addition to the existing listings filter and detail-route 404 guard.
+- The Sanity document still needs to be unpublished/archived manually in Sanity Studio; source edits do not delete CMS records.
+
+## Final contact-form update
+- Uses verified Resend sender contact@humanreliefmission.ca (after domain DNS verification).
+- Sends notifications to canadahrm@gmail.com.
+- Removes UK-specific contact email content and escapes user-provided HTML in templates.
+- In Vercel set NEXT_RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL for the desired environments and redeploy.
+- Configure Squarespace-managed DNS with the precise records displayed in Resend Domains; do not invent DNS record values.
+- Website builds and email delivery have not been tested in this environment.
