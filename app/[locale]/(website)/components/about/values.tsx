@@ -30,7 +30,7 @@ export default function Values() {
               We publish detailed annual reports and maintain full accountability to our donors and the communities we serve.
             </p>
           </div>
-
+        </div>
       </div>
     </section>
   )
