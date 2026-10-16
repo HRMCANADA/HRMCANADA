@@ -224,7 +224,7 @@ export default function DonationFail() {
                   </p>
                 </div>
                 <a
-                  href="mailto:info@humanreliefmission.com"
+                  href="mailto:canadahrm@gmail.com"
                   className="shrink-0 bg-[#B60000] hover:opacity-90 text-white text-xs font-bold px-4 py-2.5 rounded-sm transition-opacity"
                 >
                   Get Support

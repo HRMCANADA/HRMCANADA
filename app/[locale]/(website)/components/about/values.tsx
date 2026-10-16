@@ -1,4 +1,3 @@
-import { AiFillThunderbolt } from "react-icons/ai";
 import { FaGlobeAsia, FaSeedling } from "react-icons/fa";
 import { IoMdTrophy } from "react-icons/io";
 import { RiSearchFill, RiShakeHandsFill } from "react-icons/ri";
@@ -29,42 +28,6 @@ export default function Values() {
             <div className="font-bold text-lg mb-2 text-brand-black">Transparency</div>
             <p className="text-brand-black/75 ">
               We publish detailed annual reports and maintain full accountability to our donors and the communities we serve.
-            </p>
-          </div>
-          <div className="bg-brand-white p-8 rounded-sm shadow-card transition-all hover:shadow-card-hover border border-brand-lgrey/50">
-            <div className="text-3xl mb-4">
-              <AiFillThunderbolt />
-            </div>
-            <div className="font-bold text-lg mb-2 text-brand-black">Rapid Response</div>
-            <p className="text-brand-black/75 ">
-              When disasters strike, we mobilise quickly. Speed saves lives and our teams are always ready to deploy.
-            </p>
-          </div>
-          <div className="bg-brand-white p-8 rounded-sm shadow-card transition-all hover:shadow-card-hover border border-brand-lgrey/50">
-            <div className="text-3xl mb-4">
-              <FaSeedling />
-            </div>
-            <div className="font-bold text-lg mb-2 text-brand-black">Sustainability</div>
-            <p className="text-brand-black/75">
-              Beyond emergency relief, we build lasting infrastructure and skills that empower communities for generations.
-            </p>
-          </div>
-          <div className="bg-brand-white p-8 rounded-sm shadow-card transition-all hover:shadow-card-hover border border-brand-lgrey/50">
-            <div className="text-3xl mb-4">
-              <FaGlobeAsia />
-            </div>
-            <div className="font-bold text-lg mb-2 text-brand-black">Inclusivity</div>
-            <p className="text-brand-black/75 ">
-              We serve all people regardless of religion, ethnicity, gender or nationality. Humanity is our only criterion.
-            </p>
-          </div>
-          <div className="bg-brand-white p-8 rounded-sm shadow-card transition-all hover:shadow-card-hover border border-brand-lgrey/50">
-            <div className="text-3xl mb-4">
-              <IoMdTrophy />
-            </div>
-            <div className="font-bold text-lg mb-2 text-brand-black">Excellence</div>
-            <p className="text-brand-black/75 ">
-              We hold ourselves to the highest professional standards because the people we serve deserve nothing less.
             </p>
           </div>
         </div>

@@ -19,14 +19,9 @@ export default async function Impact() {
   const data = await sanityFetch<any>(ABOUT_IMPACT_QUERY);
   const impactData = data?.impactSection;
 
-  const defaultItems = [
-    { icon: "FaUtensils", figure: "500M", description: "Hot Meals Served" },
-    { icon: "BiSolidBackpack", figure: "50K+", description: "Student Bags Delivered" },
-    { icon: "GiWaterDrop", figure: "200K", description: "Families with Clean Water" },
-    { icon: "FaBriefcaseMedical", figure: "150K", description: "Medical Treatments Given" }
-  ];
+  const defaultItems: { icon: string; figure: string; description: string }[] = [];
 
-  const items = impactData?.items || defaultItems;
+  const items = (impactData?.items || []).filter((item: any) => /educat|school|learn|employ|job|settle|newcomer/i.test(item.description || ""));
   const sectionTitle = impactData?.title || "Our Track Record";
 
   return (
@@ -42,7 +37,7 @@ export default async function Impact() {
           </h2>
         </div>
         <p className="text-[1.05rem] text-brand-grey leading-[1.7] max-w-[600px]">
-          Every pound donated creates real, measurable change in the lives of
+          Every dollar donated creates real, measurable change in the lives of
           people who need it most.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">

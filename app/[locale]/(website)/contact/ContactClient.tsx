@@ -149,7 +149,7 @@ export default function ContactClient() {
                   <div>
                     <div className="text-[0.75rem] font-bold text-purple uppercase tracking-widest mb-1">Email</div>
                     <div className="text-brand-black font-medium leading-relaxed">
-                      <a href="mailto:info@humanreliefmission.com" className="hover:underline">info@humanreliefmission.com</a>
+                      <a href="mailto:canadahrm@gmail.com" className="hover:underline">canadahrm@gmail.com</a>
                     </div>
                   </div>
                 </div>

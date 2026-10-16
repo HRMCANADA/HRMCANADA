@@ -253,7 +253,7 @@ export default function DonationReceipt({
               {/* Human Relief Mission · Registered Charity No. {process.env.NEXT_PUBLIC_CHARITY_NO ?? '1160380'} */}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', margin: '6px 0 0' }}>
-              humanreliefmission.com · This email was sent to {email}
+              humanreliefmission.ca · This email was sent to {email}
             </Text>
           </Section>
 

@@ -13,8 +13,6 @@ interface DonationStepDetailsProps {
   setLastName: (v: string) => void;
   email: string;
   setEmail: (v: string) => void;
-  newsletterOptIn: boolean;
-  setNewsletterOptIn: (v: boolean) => void;
   address: string;
   setAddress: (v: string) => void;
   city: string;
@@ -37,8 +35,6 @@ export default function DonationStepDetails({
   setLastName,
   email,
   setEmail,
-  newsletterOptIn,
-  setNewsletterOptIn,
   address,
   setAddress,
   city,
@@ -190,22 +186,6 @@ export default function DonationStepDetails({
           </div>
         </div>
       )}
-      <div className="p-4 bg-purple-faint border border-purple rounded-sm mb-8 flex gap-3 items-start">
-        <input
-          type="checkbox"
-          className="mt-1 w-4 h-4 cursor-pointer accent-purple"
-          id="optIn"
-          checked={newsletterOptIn}
-          onChange={(e) => setNewsletterOptIn(e.target.checked)}
-        />
-        <label
-          htmlFor="optIn"
-          className="text-[0.875rem] text-purple-dark cursor-pointer font-medium leading-relaxed"
-        >
-          {"I'd like to receive updates about Human Relief Mission's work and how my donation is making a difference."}
-        </label>
-      </div>
-
       <DonationStepFooter onBack={() => goStep(3)} onNext={() => goStep(5)} nextDisabled={isNextDisabled} />
     </div>
   );

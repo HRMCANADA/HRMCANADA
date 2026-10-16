@@ -1,11 +1,11 @@
 /**
- * JSON-LD structured data builders for humanreliefmission.com
+ * JSON-LD structured data builders for humanreliefmission.ca
  *
  * All builders return plain objects — no runtime dependency.
  * Use with <JsonLd data={...} /> in any Server Component.
  */
 
-export const BASE_URL = "https://humanreliefmission.com";
+export const BASE_URL = "https://humanreliefmission.ca";
 
 // ─── Shared Organisation identity ───────────────────────────────────────────
 
@@ -14,59 +14,30 @@ const ORG_ID = `${BASE_URL}/#organization`;
 export const ORGANIZATION = {
   "@type": ["NGO", "Organization"],
   "@id": ORG_ID,
-  name: "Human Relief Mission",
-  legalName: "HUMAN RELIEF MISSION",
+  name: "Human Relief Mission Canada",
+  legalName: "Human Relief Mission Canada",
   url: BASE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: `${BASE_URL}/logo-white.svg`,
-  },
-  description:
-    "Human Relief Mission is a UK-registered charity delivering humanitarian aid, sustainable development programmes and emergency relief to communities in need worldwide.",
-  foundingDate: "2015",
-  nonprofitStatus: "Registered Charity",
-  taxID: "1160380",
-  identifier: {
-    "@type": "PropertyValue",
-    name: "UK Charity Number",
-    value: "1160380",
-  },
+  logo: { "@type": "ImageObject", url: `${BASE_URL}/logo-white.svg` },
+  description: "Independent Canadian non-profit supporting education, employment readiness, and newcomer settlement in Canada; not affiliated with any similarly named international organization.",
+  foundingDate: "2024-04",
   address: {
     "@type": "PostalAddress",
     streetAddress: "6745 Russell Road",
-    addressLocality: "Carlsbad Spring Ottawa",
+    addressLocality: "Carlsbad Springs",
     addressRegion: "ON",
     postalCode: "K0A 1K0",
     addressCountry: "CA",
   },
-  contactPoint: [
-    {
-      "@type": "ContactPoint",
-      telephone: "+443000300160",
-      contactType: "customer service",
-      availableLanguage: "English",
-      hoursAvailable: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "10:00",
-        closes: "18:00",
-      },
-    },
-    {
-      "@type": "ContactPoint",
-      email: "info@humanreliefmission.com",
-      contactType: "customer support",
-    },
-  ],
+  contactPoint: [{
+    "@type": "ContactPoint",
+    telephone: "+16134066745",
+    email: "canadahrm@gmail.com",
+    contactType: "general enquiries",
+    availableLanguage: "English",
+  }],
   sameAs: [
-    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5051625",
+    "https://www.facebook.com/share/1Deka1hKMg/",
+    "https://www.instagram.com/hrm.canada",
   ],
 };
 
@@ -88,7 +59,7 @@ export function buildWebSite() {
     "@id": `${BASE_URL}/#website`,
     url: BASE_URL,
     name: "Human Relief Mission",
-    description: "Helping Humanity Through Welfare",
+    description: "Education, employment readiness and newcomer settlement in Canada",
     publisher: { "@id": ORG_ID },
     potentialAction: {
       "@type": "SearchAction",
@@ -148,7 +119,7 @@ export function buildItemList(
     "@type": "ItemList",
     name: "Our Projects",
     description:
-      "Humanitarian and development projects run by Human Relief Mission.",
+      "Education, employment readiness and newcomer settlement programs in Canada.",
     url: `${BASE_URL}/projects`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",

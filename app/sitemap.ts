@@ -11,7 +11,7 @@
 import { MetadataRoute } from 'next'
 import { sanityFetch } from './[locale]/lib/sanity/client'
 
-const BASE_URL = 'https://humanreliefmission.com'
+const BASE_URL = 'https://humanreliefmission.ca'
 
 // Match whatever locales your next-intl / i18n config actually supports.
 // Adjust this list to your real middleware.ts locales array.
@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Dynamic: project pages ────────────────────────────────────────────────
   const projects = await sanityFetch<ProjectSlugResult[]>(PROJECT_SLUGS_QUERY)
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.flatMap((p) =>
+  const projectRoutes: MetadataRoute.Sitemap = projects.filter((p) => !/listening[ -]?circle/i.test(p.slug)).flatMap((p) =>
     localisedEntries(
       `/project/${p.slug}`,
       new Date(p._updatedAt),
@@ -112,13 +112,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const donationItemRoutes: MetadataRoute.Sitemap = []
 
   // ── Dynamic: ecosystem stage pages ────────────────────────────────────────
-  const ecosystemStages = await sanityFetch<EcosystemSlugResult[]>(
-    ECOSYSTEM_SLUGS_QUERY
-  )
-
-  const ecosystemRoutes: MetadataRoute.Sitemap = ecosystemStages.flatMap((e) =>
-    localisedEntries(`/ecosystem/${e.slug}`, new Date(e._updatedAt), 0.5, 'monthly')
-  )
+  const ecosystemRoutes: MetadataRoute.Sitemap = [] // Legacy UK ecosystem retired
 
   return [
     ...staticRoutes,

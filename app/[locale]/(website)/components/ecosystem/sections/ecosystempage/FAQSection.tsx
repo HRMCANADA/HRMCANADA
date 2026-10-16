@@ -85,10 +85,10 @@ export default function FAQSection({ stage }: Props) {
           <p className="text-brand-black text-sm mt-1">
             Get in touch with our team:{" "}
             <a
-              href="mailto:info@humanreliefmission.com"
+              href="mailto:canadahrm@gmail.com"
               className="text-purple font-medium hover:underline"
             >
-              info@humanreliefmission.com
+              canadahrm@gmail.com
             </a>
           </p>
         </div>

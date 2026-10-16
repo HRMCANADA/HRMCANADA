@@ -135,6 +135,7 @@ export async function generateMetadata({
   params: Promise<{ projectSlug: string }>;
 }): Promise<Metadata> {
   const { projectSlug } = await params;
+  if (/listening[ -]?circle/i.test(projectSlug)) notFound();
   const project = await sanityFetch(PROJECT_QUERY, { projectSlug });
 
   if (!project) return { title: "Project Not Found | Human Relief Mission" };
@@ -166,7 +167,7 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       siteName: "Human Relief Mission",
-      locale: "en_GB",
+      locale: "en_CA",
       type: "website",
       images: ogImageUrl ? [{ url: ogImageUrl, width: 1200, height: 630, alt: title }] : undefined,
     },
@@ -185,6 +186,7 @@ export default async function ProjectItem({
   params: Promise<{ projectSlug: string }>;
 }) {
   const { projectSlug } = await params;
+  if (/listening[ -]?circle/i.test(projectSlug)) notFound();
   const project = await sanityFetch(PROJECT_QUERY, { projectSlug });
 
   if (!project) {

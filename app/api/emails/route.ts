@@ -50,16 +50,16 @@ export async function POST(request: Request) {
     : `Donation Receipt — ${reference} | Human Relief Mission`;
 
   const orgSubject = `🎉 New Donation: ${reference} from ${firstName} ${lastName}`;
-  const orgEmail = process.env.CONTACT_TO_EMAIL || 'info@humanreliefmission.com';
+  const orgEmail = process.env.CONTACT_TO_EMAIL || 'canadahrm@gmail.com';
 
   try {
     // 1. Send receipt to donor
     const { data: donorResult, error: donorErr } = await resend.emails.send({
-      from: 'Human Relief Mission <donations@notifications.humanreliefmission.com>',
+      from: 'Human Relief Mission <donations@notifications.humanreliefmission.ca>',
       to: email,
-      bcc: 'donate@humanreliefmission.com',
+      bcc: 'donate@humanreliefmission.ca',
       subject: donorSubject,
-      replyTo: 'info@humanreliefmission.com',
+      replyTo: 'canadahrm@gmail.com',
       react: DonationReceipt({
         firstName,
         lastName,
@@ -84,7 +84,7 @@ export async function POST(request: Request) {
     // 2. Send notification to organization team (non-blocking failure)
     try {
       await resend.emails.send({
-        from: 'Human Relief Mission <donations@notifications.humanreliefmission.com>',
+        from: 'Human Relief Mission <donations@notifications.humanreliefmission.ca>',
         to: orgEmail,
         subject: orgSubject,
         replyTo: `${firstName} ${lastName} <${email}>`,

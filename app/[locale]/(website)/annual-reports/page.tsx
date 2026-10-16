@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       'Read our annual reports — a comprehensive overview of our programmes, financials and the impact your donations have had on communities in Afghanistan.',
     url: `${BASE_URL}/annual-reports`,
     siteName: 'Human Relief Mission',
-    locale: 'en_GB',
+    locale: 'en_CA',
     type: 'website',
   },
   twitter: {
