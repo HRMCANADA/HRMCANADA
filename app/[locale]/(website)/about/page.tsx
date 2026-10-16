@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Hero from "../components/about/ecosystem/Hero";
 import WhoWeAre from "../components/about/WhoWeAre";
 import Impact from "../components/about/Impact";
 import Values from "../components/about/values";
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
       "Learn about Human Relief Mission Canada, our independence and our education, employment, and settlement programs.",
     url: `${BASE_URL}/about`,
     siteName: "Human Relief Mission",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
@@ -41,7 +40,6 @@ export default function About() {
         buildBreadcrumb([{ name: "Home", url: BASE_URL }, { name: "About", url: `${BASE_URL}/about` }]),
       ]} />
       <WhoWeAre />
-      <Hero />
       {/* UK donation-policy content removed pending Canadian policy review. */}
       <Impact />
       <Values />

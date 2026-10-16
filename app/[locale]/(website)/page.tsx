@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Human Relief Mission Canada is an independent Canadian non-profit focused on education, employment readiness, and newcomer settlement.",
     url: BASE_URL,
     siteName: "Human Relief Mission",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "Explore educational, employment-readiness, and newcomer settlement programs in Canada.",
     url: `${BASE_URL}/projects`,
     siteName: "Human Relief Mission",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {

@@ -30,7 +30,7 @@ function isHiddenNavLink(item: {
   const label = item.label ?? "";
   const href = item.internalLink ?? item.externalLink ?? "";
   return (
-    /listening[\s-]*circle|polic(?:y|ies)|governance/i.test(label) ||
+    /listening[\s-]*circle|polic(?:y|ies)|governance|ecosystem|zakat transformation/i.test(label) ||
     /\/(?:en\/|fr\/)?projects\/listening-circle(?:\/|$|[?#])/i.test(href) ||
     /\/(?:en\/|fr\/)?policies(?:\/|$|[?#])/i.test(href)
   );

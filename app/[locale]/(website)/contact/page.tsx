@@ -6,23 +6,23 @@ import { BASE_URL, buildContactPage, buildBreadcrumb } from "../lib/jsonld";
 export const metadata: Metadata = {
   title: "Contact Us | Human Relief Mission",
   description:
-    "Get in touch with Human Relief Mission. Have a question, donation enquiry, or volunteer application? Contact our team in Leeds, UK.",
+    "Contact Human Relief Mission Canada about educational, employment-readiness and newcomer settlement programs.",
   alternates: {
     canonical: `${BASE_URL}/contact`,
   },
   openGraph: {
     title: "Contact Us | Human Relief Mission",
     description:
-      "Get in touch with Human Relief Mission. Have a question, donation enquiry, or volunteer application? Contact our team in Leeds, UK.",
+      "Contact Human Relief Mission Canada about educational, employment-readiness and newcomer settlement programs.",
     url: `${BASE_URL}/contact`,
     siteName: "Human Relief Mission",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Us | Human Relief Mission",
-    description: "Get in touch with our team in Leeds, UK.",
+    description: "Get in touch with our Canadian team.",
   },
 };
 

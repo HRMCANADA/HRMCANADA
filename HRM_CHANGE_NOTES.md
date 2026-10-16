@@ -47,4 +47,4 @@ Changes prepared in source code; **not deployed**.
 
 - Newsletter removed from homepage, including subscription form and Mailchimp actions. Removed donation checkout newsletter opt-in. No Mailchimp account or keys required.
 
-- Standardized remaining visible website and email reply-to references from info@humanreliefmission.com to canadahrm@gmail.com.
+- Standardized remaining visible website and email reply-to references from info@humanreliefmission.ca to canadahrm@gmail.com.

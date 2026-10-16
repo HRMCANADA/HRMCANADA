@@ -8,7 +8,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://humanreliefmission.com'
+const BASE_URL = 'https://humanreliefmission.ca'
 
 export default function robots(): MetadataRoute.Robots {
   return {

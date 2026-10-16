@@ -167,7 +167,7 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       siteName: "Human Relief Mission",
-      locale: "en_GB",
+      locale: "en_CA",
       type: "website",
       images: ogImageUrl ? [{ url: ogImageUrl, width: 1200, height: 630, alt: title }] : undefined,
     },

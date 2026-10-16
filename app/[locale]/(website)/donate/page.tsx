@@ -67,7 +67,7 @@ export const metadata: Metadata = {
       "Donate online securely to support urgent humanitarian aid, water projects, healthcare, orphan sponsorship and income generation projects.",
     url: `${BASE_URL}/donate`,
     siteName: "Human Relief Mission",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {

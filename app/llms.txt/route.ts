@@ -2,7 +2,7 @@ import { sanityFetch } from "@/app/[locale]/lib/sanity/client";
 
 export const revalidate = 60; // Revalidate dynamic llms.txt every 60 seconds
 
-const BASE_URL = "https://humanreliefmission.com";
+const BASE_URL = "https://humanreliefmission.ca";
 
 // GROQ Queries
 const PROJECTS_QUERY = `
@@ -43,7 +43,6 @@ export async function GET() {
   markdown += `- [About Us](${BASE_URL}/about): Mission and programmes of Human Relief Mission Canada.\n`;
   markdown += `- [Our Projects](${BASE_URL}/projects): Explore educational, employment and settlement projects.\n`;
   markdown += `- [4 Phase Ecosystem](${BASE_URL}/ecosystem): This model lifting families out of poverty from receiving Zakat to paying Zakat.\n`;
-  markdown += `- [Donate](${BASE_URL}/donate): Donate online securely with Gift Aid, Zakat, and Sadaqah options.\n`;
   markdown += `- [Contact Us](${BASE_URL}/contact): Contact the Human Relief Mission Canada team.\n`;
   markdown += `- [Annual Reports](${BASE_URL}/annual-reports): Financial transparency, audited accounts and annual impact overviews.\n`;
 
@@ -54,19 +53,6 @@ export async function GET() {
       const summary = p.llmsSummary || p.seoDescription || p.tagline || p.cardSummary || "Community programme by Human Relief Mission Canada.";
       const cleanSummary = summary.replace(/\s+/g, " ").trim();
       markdown += `- [${p.name}](${BASE_URL}/projects/${p.slug}): ${cleanSummary}\n`;
-    });
-    markdown += `\n`;
-  }
-
-  // Dynamic Ecosystem Stages
-  if (stages && stages.length > 0) {
-    markdown += `## 4-Phase Ecosystem Stages\n\n`;
-    stages.forEach((s) => {
-      const name = s.stageName || s.title;
-      const stageLabel = s.stageNumber ? `Stage ${s.stageNumber}: ${name}` : name;
-      const desc = s.seoDescription || s.cardDescription || s.headerDescription || "Ecosystem stage for long-term community development.";
-      const cleanDesc = desc.replace(/\s+/g, " ").trim();
-      markdown += `- [${stageLabel}](${BASE_URL}/ecosystem/${s.slug}): ${cleanDesc}\n`;
     });
     markdown += `\n`;
   }
